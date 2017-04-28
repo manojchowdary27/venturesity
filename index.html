@@ -112,7 +112,7 @@
 				 </span>
 			 </span>
 			 
-			 <ng-form name="mcheck">
+			 
 			 <span ng-if="!y.autoselect.length">
 				 <span  ng-repeat = "i in y.options" >
 						<br><input ng-model="formData[y.model][i]" type="checkbox"  ng-required="y.required" ng-disabled="{{y.editable}}"     value="true"  /> 
@@ -120,10 +120,8 @@
 						
 				 </span>
 			 </span>
-			 <span style = "color:red" ng-show = "mcheck.$invalid">  
-				<span ng-show = "mcheck.$error.required">*{{formData[y.model].length}}</span>   
-             </span>
-			 </ng-form>
+			 
+			 
 			</fieldset>
 			</div>
 			
