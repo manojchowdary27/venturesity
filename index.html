@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="vformApp">
+    <head>        
+        <!-- META SECTION -->
+        <title>VentureSity -Hiring Challenge</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- END META SECTION -->    
+        <script src="js/angular.min.js"></script> 
+         <link rel="stylesheet" href="css/style.css"  />                                 
+		<script src = "js/app.js"></script>
+		
+    </head>
+    <body style="background:url('img/back.png')">
+		<h1>Venture Sity Hiring Challenge</h1>
+		
+	<div id ="formdiv" ng-controller="vformCtrl">
+	
+	<center><button class="b" ng-if="butid" ng-bind = "butid" ng-click="render()"></button></center>
+	<div>
+		<form class="my-Form" id="{{ $scope.form_id }}" name ="{{ $scope.form_name }}" ng-submit="coverForm.$valid && submit()" novalidate>
+			  <ng-form name="coverForm" > 
+			<span ng-repeat = "y in fields" >
+			
+			
+			<div ng-if="y.component == 'textinput' " >
+				
+			<ng-form name="mk" >
+				<fieldset>
+				<legend style="font-weight:bold;color:blue;">{{y.label | UpperFirst}}</legend>
+				<p>{{y.description| UpperFirst}}</p>
+			<input id = "{{y.model}}" name = "man" type="text"  ng-init="formData[y.model] = y.autofill"  ng-disabled="{{y.editable}}" ng-required="{{y.required}}" ng-model="formData[y.model]"ng-pattern="{{y.validation}}"> 
+                         <span style = "color:red;font-weight:bold;" ng-show = "mk.man.$invalid">  
+                            <span ng-show = "mk.man.$error.required">*</span>  
+                            <span ng-show = "mk.man.$error.pattern">Pattern Wrong</span>  
+                         </span>
+                 </fieldset>
+            </ng-form>
+			</div>
+			
+			<div ng-if="y.component == 'textarea' " >
+				
+				
+			<ng-form name="mk" >
+				<fieldset>
+				<legend style="font-weight:bold;color:blue;">{{y.label | UpperFirst}}</legend>
+				<p>{{y.description| UpperFirst}}</p>
+			    <textarea ng-init="formData[y.model] = y.autofill" id = "{{y.model}}" name = "man"  ng-model="formData[y.model]" ng-required="{{y.required}}" ng-pattern="{{y.validation}}" type="{{y.component}}"   ng-disabled="{{y.editable}}" >{{y.autofill}}</textarea>
+			 <span style = "color:red" ng-show = "mk.man.$invalid">  
+                            <span ng-show = "mk.man.$error.required">*</span>  
+                            <span ng-show = "mk.man.$error.pattern">Pattern Wrong</span>  
+             </span>
+             </fieldset>
+			</ng-form>
+			</div>
+			
+			<div ng-if="y.component == 'select' " > 
+				
+			<ng-form name="mk" >
+			<fieldset>
+				<legend style="font-weight:bold;color:blue;">{{y.label | UpperFirst}}</legend>
+				<p>{{y.description| UpperFirst}}</p>
+			<select name="man" ng-init="formData[y.model] = y.autoselect[0]" ng-model="formData[y.model]" id = "{{y.model}}" ng-required="{{y.required}}"  type="{{y.component}}"  ng-disabled="{{y.editable}}" >
+				<option value=""></option>
+				<option  ng-repeat="o in y.options" ng-if="y.autoselect == o " selected value="{{o}}">{{ o}}</option>		
+				<option  ng-repeat="o in y.options" ng-if="y.autoselect != o "  value="{{o}}">{{ o}}</option>		
+			</select>
+			<span style = "color:red" ng-show = "mk.man.$invalid">  
+                            <span ng-show = "mk.man.$error.required">*</span>  
+             </span>
+			</fieldset>
+			</ng-form>
+			</div>
+			
+			
+			<div ng-if="y.component == 'radio' " >
+				
+			<ng-form name="mk" >
+			 <fieldset>
+				<legend style="font-weight:bold;color:blue;">{{y.label | UpperFirst}}</legend>
+				<p>{{y.description| UpperFirst}}</p>
+			 <span style = "color:red" ng-show = "mk.$invalid">  
+                            <span ng-show = "mk.$error.required">*</span>   
+             </span>
+			 <span ng-repeat = "i in y.options" >
+				<br><input ng-init="formData[y.model] = y.autoselect[0]" name = "{{y.model}}"  ng-model="formData[y.model]" id="{{i}}"  ng-disabled="{{y.editable}}" ng-if="y.autoselect == i " checked   type="{{y.component}}" value="{{i}}"  />
+				<input   name = "{{y.model}}"  ng-model="formData[y.model]" id="{{i}}" ng-disabled="{{y.editable}}" ng-if="y.autoselect != i "  ng-required="{{y.required}}"  type="{{y.component}}" value="{{i}}"  />
+				<span>{{i}}</span>
+			</span>
+			</fieldset>
+			</ng-form>
+			</div>
+			
+			
+			<div ng-if="y.component == 'checkbox' " >
+				<fieldset>
+				<legend style="font-weight:bold;color:blue;">{{y.label | UpperFirst}}</legend>
+				<p>{{y.description| UpperFirst}}</p>
+			 <span ng-if="y.autoselect.length">
+				 <span  ng-repeat = "i in y.autoselect" >
+					 <span ng-if="s==i" ng-repeat="s in y.options">
+						<br><input ng-init="formData[y.model][i] =true" ng-model="formData[y.model][i]" type="checkbox"   ng-disabled="{{y.editable}}"  ng-checked="s"   value="true"  /> 
+						<span>{{i}}</span>
+					 </span>	
+				 </span>
+			 </span>
+			 <span ng-if="y.autoselect.length">
+				 <span  ng-repeat = "i in y.newoptions" >
+						<br><input ng-model="formData[y.model][i]" type="checkbox"   ng-disabled="{{y.editable}}"   /> 
+						<span>{{i}}</span>
+				 </span>
+			 </span>
+			 
+			 <ng-form name="mcheck">
+			 <span ng-if="!y.autoselect.length">
+				 <span  ng-repeat = "i in y.options" >
+						<br><input ng-model="formData[y.model][i]" type="checkbox"  ng-required="y.required" ng-disabled="{{y.editable}}"     value="true"  /> 
+						<span>{{i}}</span>	<br>
+						
+				 </span>
+			 </span>
+			 <span style = "color:red" ng-show = "mcheck.$invalid">  
+				<span ng-show = "mcheck.$error.required">*{{formData["input1"].length}}</span>   
+             </span>
+			 </ng-form>
+			</fieldset>
+			</div>
+			
+			<br>
+			
+			</span>
+			<span>{{formData}}</span>
+			<input type="submit" ng-if="subid" ng-model = "subid" ng-disabled="!coverForm.$valid" style="margin-left:38%;" value="SUBMIT" >
+			</ng-form>
+		</form>
+	</div>
+	</div>
+	
+	</body>
+</html>

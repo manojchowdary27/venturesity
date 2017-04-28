@@ -1,0 +1,112 @@
+.my-Form button,input[type="submit"],.b {
+	  -webkit-borde r-radius: 0;
+	  -moz-border-radius: 0;
+	  border-radius: 0px;
+	  text-shadow: 0px 1px 0px #f508f5;
+	  font-family: Georgia;
+	  cursor:pointer;
+	  color: #f5f0f4;
+	  font-size: 13px;
+	  background: #089afc;
+	  padding: 10px 20px 10px 20px;
+	  border: solid #dfeaf0 2px;
+	  text-decoration: none;
+	}
+
+.my-Form button:hover ,input[type="submit"]:hover,.b:hover{
+	  background: #053c5e;
+	  text-decoration: none;
+	  cursor:hand;
+	  
+}
+		
+h1{
+	margin-left:35.8%;
+	color:blue;
+	padding-bottom:5%;
+	text-shadow: 0px 1px 0px #f508f5;
+}
+.my-Form {
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 800px;
+    background: #FFF;
+    padding: 30px 30px 20px 30px;
+    box-shadow: rgba(187, 187, 187, 1) 0 0px 20px -1px;
+    -webkit-box-shadow: rgba(187, 187, 187, 1) 0 0px 20px -1px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+    font-size:20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.my-Form h1 {
+    font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #F5F5F5;
+    margin: -10px -30px 10px -30px;
+    color: #969696;
+}
+.my-Form h1>span {
+    display: block;
+    font-size: 11px;
+    color: #C4C2C2;
+}
+.my-Form label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.my-Form label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #969696;
+}
+.my-Form input[type="text"], .my-Form textarea,.my-Form select{
+    color: #555;
+    width: 60%;
+    padding: 3px 0px 3px 5px;
+    margin-top: 2px;
+    margin-right: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e5e5;
+    background: #fbfbfb;
+    height: 25px;
+    line-height:15px;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+}
+
+.my-Form input[type="checkbox"],input[type="radio"]{
+	
+	color: #555;
+    width: 10px;
+    border: 1px solid #e5e5e5;
+    background: #fbfbfb;
+    height: 25px;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+	}
+
+.my-Form select {
+    width: 60%;
+    line-height: 15px;
+    height: 30px;
+}
+.my-FOrm select:hover{
+cursor:pointer;
+}
+.my-Form p{
+font-size:16px;
+background: #FBFBFB;
+color:#16F0FF;
+}
+.my-Form input[type="text"]:disabled:hover,input[type="submit"]:disabled:hover,textarea:disabled:hover,select:disabled:hover
+,input[type="radio"]:disabled:hover,input[type="checkbox"]:disabled:hover{
+cursor:not-allowed;
+}
