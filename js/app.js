@@ -27,13 +27,14 @@ vformApp.controller('vformCtrl', function($scope, $http,$window ,$sce){
          })
           .success(function(response) {
             if (response.success==true) {
-              console.log(response.success);
+              
               $scope.subid = "Success";
               alert("Success");
               window.location.href="index.html";
             } 
             else {
               console.log(response.success);
+              alert("Error Occured..Try Again");
             }
           });
 
@@ -46,7 +47,7 @@ vformApp.controller('vformCtrl', function($scope, $http,$window ,$sce){
 		$http.get("https://randomform.herokuapp.com/")
 		.then(function (response) {
 			var result = response.data.data.form_fields;
-		 console.log(response.data.data.form_fields);
+		 
 		 var i=0;
 		 $scope.butid = false;
 		 $scope.subid ="Submit";
@@ -60,7 +61,6 @@ vformApp.controller('vformCtrl', function($scope, $http,$window ,$sce){
 			var a1= result[key]['options'];
 			var a2= result[key]['autoselect'];
 			var newoptions =[];
-			console.log(result[key]['options']);
 			for(mk=0;mk<result[key]['options'].length;mk++){
 				var flag=0;
 				for(ml=0;ml<result[key]['autoselect'].length;ml++){
@@ -74,10 +74,10 @@ vformApp.controller('vformCtrl', function($scope, $http,$window ,$sce){
 						mm = mm+1;
 						}
 				}
-				console.log(newoptions);
+
 			result[key]['newoptions'] = newoptions;
 		}
-        console.log(result[key]['editable']);
+        
         i =i+1;
         result[key]['model'] = "input"+i;                      //Adding a new field model in result object .It is used to further to in the template at ng-model directive
          if(result[key]['editable']==false){
@@ -91,7 +91,7 @@ vformApp.controller('vformCtrl', function($scope, $http,$window ,$sce){
 		// modifying given fields data <----end
 		
 		$scope.fields = result;
-		console.log($scope.fields);
+		
 		 }
 		 );	
 		}
